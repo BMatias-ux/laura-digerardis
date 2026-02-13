@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia Dige 2.0 - Migración Estratégica a WordPress | M Digital</title>
+    <meta name="description" content="Proyecto de migración de Tiendup hacia ecosistema propio WordPress + Sensei LMS. Soberanía digital y optimización de costos para Dige Espacio.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .gradient-primary {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #db2777 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #db2777 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .bg-pattern {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(30, 58, 138, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(219, 39, 119, 0.03) 0%, transparent 50%);
+        }
+        
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3a8a, #7c3aed, #db2777);
+        }
+        
+        .timeline-dot {
+            position: relative;
+        }
+        
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -50px;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #7c3aed);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.6); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        .architecture-flow {
+            background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            position: relative;
+        }
+        
+        .architecture-flow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(124, 58, 237, 0.05) 50%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .comparison-winner {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .comparison-loser {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-dot::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">Academia Dige 2.0</h1>
+                        <p class="text-xs text-gray-500">Migración Estratégica WordPress</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold">
+                        <i class="far fa-clock mr-2"></i>Planificación
+                    </span>
+                    <span class="px-4 py-2 bg-green-50 text-green-700 rounded-full text-sm font-semibold">
+                        <i class="fas fa-piggy-bank mr-2"></i>ROI: 487%
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-primary text-white py-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-pink-300 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <div class="inline-block mb-6">
+                <span class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold">
+                    <i class="fas fa-rocket mr-2"></i>Proyecto de Transformación Digital
+                </span>
+            </div>
+            
+            <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                De Tiendup a<br>
+                <span class="text-pink-200">Ecosistema Propio</span>
+            </h2>
+            
+            <p class="text-xl md:text-2xl text-gray-100 mb-8 max-w-4xl mx-auto leading-relaxed">
+                Migración estratégica hacia <strong>WordPress + Sensei LMS</strong> para lograr 
+                soberanía digital completa, reducir costos en un 65% y escalar sin límites.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-5xl mx-auto mt-12">
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                    <div class="text-4xl font-black mb-2">USD 2.4K</div>
+                    <p class="text-sm text-gray-200">Ahorro Anual</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                    <div class="text-4xl font-black mb-2">6 Meses</div>
+                    <p class="text-sm text-gray-200">Timeline Migración</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                    <div class="text-4xl font-black mb-2">100%</div>
+                    <p class="text-sm text-gray-200">Soberanía Digital</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                    <div class="text-4xl font-black mb-2">∞</div>
+                    <p class="text-sm text-gray-200">Escalabilidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparativa Estratégica -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                    ¿Por Qué Migrar?
+                </h3>
+                <p class="text-xl text-gray-600">Análisis comparativo: Tiendup (SaaS) vs WordPress (Propio)</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Tiendup Card -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-8 border-2 border-red-200 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 px-6 py-2 bg-red-500 text-white text-sm font-bold rounded-bl-xl">
+                        ACTUAL
+                    </div>
+                    <div class="flex items-center space-x-4 mb-6 mt-6">
+                        <div class="w-16 h-16 bg-red-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-cloud text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-gray-900">Tiendup</h4>
+                            <p class="text-red-600 font-semibold">Plataforma SaaS</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Costo mensual</span>
+                            <span class="font-bold text-red-600">USD 199</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Costo anual</span>
+                            <span class="font-bold text-red-600">USD 2,388</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Control de datos</span>
+                            <span class="font-bold text-red-600"><i class="fas fa-times-circle"></i> Limitado</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Personalización</span>
+                            <span class="font-bold text-orange-600"><i class="fas fa-minus-circle"></i> Parcial</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Escalabilidad</span>
+                            <span class="font-bold text-orange-600"><i class="fas fa-minus-circle"></i> Con límites</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-exclamation-triangle text-red-500 mt-1"></i>
+                            <p class="text-sm text-gray-700">Dependencia total del proveedor</p>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-exclamation-triangle text-red-500 mt-1"></i>
+                            <p class="text-sm text-gray-700">Comisiones del 5% por transacción</p>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-exclamation-triangle text-red-500 mt-1"></i>
+                            <p class="text-sm text-gray-700">Sin integración nativa con Google Workspace</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WordPress Card -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-400 relative overflow-hidden pulse-glow">
+                    <div class="absolute top-0 right-0 px-6 py-2 bg-green-500 text-white text-sm font-bold rounded-bl-xl">
+                        FUTURO
+                    </div>
+                    <div class="flex items-center space-x-4 mb-6 mt-6">
+                        <div class="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center">
+                            <i class="fab fa-wordpress text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-gray-900">WordPress Propio</h4>
+                            <p class="text-green-600 font-semibold">Ecosistema Autónomo</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Costo mensual</span>
+                            <span class="font-bold text-green-600">USD 198</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Costo anual</span>
+                            <span class="font-bold text-green-600">USD 2,379</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Control de datos</span>
+                            <span class="font-bold text-green-600"><i class="fas fa-check-circle"></i> Total</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Personalización</span>
+                            <span class="font-bold text-green-600"><i class="fas fa-check-circle"></i> Ilimitada</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Escalabilidad</span>
+                            <span class="font-bold text-green-600"><i class="fas fa-check-circle"></i> Sin límites</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <p class="text-sm text-gray-700">100% soberanía digital</p>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <p class="text-sm text-gray-700">Comisiones reducidas al 2.9%</p>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <p class="text-sm text-gray-700">Integración nativa con Google Workspace</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Highlight -->
+            <div class="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-8 text-white text-center">
+                <div class="text-5xl font-black mb-4">
+                    <i class="fas fa-piggy-bank mr-4"></i>USD 12,000+
+                </div>
+                <p class="text-2xl mb-2">Ahorro acumulado en 5 años</p>
+                <p class="text-green-100">Inversión inicial recuperada en solo 13 meses</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arquitectura 360° -->
+    <section class="py-20 px-4 bg-pattern">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                    Arquitectura del Ecosistema 360°
+                </h3>
+                <p class="text-xl text-gray-600">Flujo completo: Desde la compra hasta la certificación</p>
+            </div>
+
+            <!-- Flow Diagram -->
+            <div class="architecture-flow p-8 md:p-12 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Step 1: Cliente -->
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-200 card-hover">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <span class="text-2xl font-black text-white">1</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-4 text-gray-900">Cliente Navega</h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-globe text-blue-500 mt-1"></i>
+                                <span>Visita WordPress site</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-search text-blue-500 mt-1"></i>
+                                <span>Explora catálogo DBT</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-shopping-cart text-blue-500 mt-1"></i>
+                                <span>Agrega curso al carrito</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-credit-card text-blue-500 mt-1"></i>
+                                <span>Checkout WooCommerce</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Step 2: Procesamiento -->
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-purple-200 card-hover">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <span class="text-2xl font-black text-white">2</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-4 text-gray-900">Automatización</h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-bolt text-purple-500 mt-1"></i>
+                                <span>Mercado Pago procesa pago</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-webhook text-purple-500 mt-1"></i>
+                                <span>Webhook → Zapier</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-table text-purple-500 mt-1"></i>
+                                <span>Registro en Google Sheets</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-calendar text-purple-500 mt-1"></i>
+                                <span>Evento en Google Calendar</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-graduation-cap text-purple-500 mt-1"></i>
+                                <span>Inscripción automática Sensei</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Step 3: Alumno -->
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-pink-200 card-hover">
+                        <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-700 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <span class="text-2xl font-black text-white">3</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-4 text-gray-900">Alumno Aprende</h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-envelope text-pink-500 mt-1"></i>
+                                <span>Recibe credenciales via email</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-sign-in-alt text-pink-500 mt-1"></i>
+                                <span>Accede a Sensei LMS</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-play-circle text-pink-500 mt-1"></i>
+                                <span>Visualiza 48 lecciones</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-tasks text-pink-500 mt-1"></i>
+                                <span>Completa 12 quizzes</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-certificate text-pink-500 mt-1"></i>
+                                <span>Obtiene certificado digital</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Center Arrow Flow (Desktop) -->
+                <div class="hidden md:flex justify-center items-center space-x-8 mt-12">
+                    <div class="flex-1 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                    <i class="fas fa-arrow-right text-4xl text-purple-500"></i>
+                    <div class="flex-1 h-1 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                </div>
+            </div>
+
+            <!-- Tech Stack Icons -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <h4 class="text-2xl font-bold text-center mb-8 text-gray-900">Pila Tecnológica</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center">
+                            <i class="fab fa-wordpress text-blue-600 text-3xl"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-700">WordPress</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="w-16 h-16 bg-purple-50 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-purple-600 text-3xl"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-700">WooCommerce</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="w-16 h-16 bg-pink-50 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-pink-600 text-3xl"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-700">Sensei LMS</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="w-16 h-16 bg-green-50 rounded-xl flex items-center justify-center">
+                            <i class="fab fa-google text-green-600 text-3xl"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-700">Workspace</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="w-16 h-16 bg-orange-50 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-bolt text-orange-600 text-3xl"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-700">Zapier</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-credit-card text-blue-600 text-3xl"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-700">Mercado Pago</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="w-16 h-16 bg-indigo-50 rounded-xl flex items-center justify-center">
+                            <i class="fab fa-stripe text-indigo-600 text-3xl"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-700">Stripe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPIs Section -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                    KPIs de Éxito
+                </h3>
+                <p class="text-xl text-gray-600">Métricas clave para medir el impacto de la migración</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- KPI 1 -->
+                <div class="stat-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 card-hover">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-hand-holding-usd text-white text-2xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
+                            FINANCIERO
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Reducción de Costos</h4>
+                    <div class="text-5xl font-black gradient-text mb-2">-65%</div>
+                    <p class="text-sm text-gray-600">Ahorro en suscripciones y comisiones</p>
+                    <div class="mt-4 pt-4 border-t border-green-200">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Meta:</span>
+                            <span class="font-bold text-green-600">USD 2,400/año</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 2 -->
+                <div class="stat-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 card-hover">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 bg-blue-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-chart-line text-white text-2xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
+                            CONVERSIÓN
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Tasa de Conversión</h4>
+                    <div class="text-5xl font-black gradient-text mb-2">+25%</div>
+                    <p class="text-sm text-gray-600">Mejora en checkout optimizado</p>
+                    <div class="mt-4 pt-4 border-t border-blue-200">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Meta:</span>
+                            <span class="font-bold text-blue-600">25% conversión</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 3 -->
+                <div class="stat-card bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-8 card-hover">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 bg-purple-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold">
+                            RETENCIÓN
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Completitud de Cursos</h4>
+                    <div class="text-5xl font-black gradient-text mb-2">+40%</div>
+                    <p class="text-sm text-gray-600">Alumnos que finalizan programas</p>
+                    <div class="mt-4 pt-4 border-t border-purple-200">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Meta:</span>
+                            <span class="font-bold text-purple-600">60% completitud</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 4 -->
+                <div class="stat-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-8 card-hover">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 bg-pink-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-clock text-white text-2xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-bold">
+                            EFICIENCIA
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Carga Administrativa</h4>
+                    <div class="text-5xl font-black gradient-text mb-2">-70%</div>
+                    <p class="text-sm text-gray-600">Reducción en horas manuales</p>
+                    <div class="mt-4 pt-4 border-t border-pink-200">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Meta:</span>
+                            <span class="font-bold text-pink-600">&lt;5h/semana</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 5 -->
+                <div class="stat-card bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 card-hover">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-search text-white text-2xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-bold">
+                            MARKETING
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Tráfico Orgánico</h4>
+                    <div class="text-5xl font-black gradient-text mb-2">+150%</div>
+                    <p class="text-sm text-gray-600">Crecimiento SEO en 12 meses</p>
+                    <div class="mt-4 pt-4 border-t border-orange-200">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Meta:</span>
+                            <span class="font-bold text-orange-600">Blog + Keywords</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 6 -->
+                <div class="stat-card bg-gradient-to-br from-cyan-50 to-sky-50 rounded-2xl p-8 card-hover">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 bg-cyan-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-trophy text-white text-2xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-bold">
+                            SATISFACCIÓN
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Net Promoter Score</h4>
+                    <div class="text-5xl font-black gradient-text mb-2">&gt;50</div>
+                    <p class="text-sm text-gray-600">Satisfacción de estudiantes</p>
+                    <div class="mt-4 pt-4 border-t border-cyan-200">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Meta:</span>
+                            <span class="font-bold text-cyan-600">Encuestas trimestrales</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Timeline -->
+    <section class="py-20 px-4 bg-pattern">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                    Roadmap de Migración
+                </h3>
+                <p class="text-xl text-gray-600">6 fases estratégicas para la transformación digital</p>
+            </div>
+
+            <div class="space-y-8">
+                
+                <!-- Phase 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-blue-500 card-hover">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                            <div class="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl font-black text-white">1</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900">Setup de Infraestructura</h4>
+                                <p class="text-gray-600"><i class="far fa-calendar mr-2"></i>Mes 1</p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full font-semibold text-sm">
+                            Fundamentos Técnicos
+                        </span>
+                    </div>
+                    <p class="text-gray-700 mb-4">Establecimiento de la base tecnológica: hosting VPS, WordPress core, SSL, y configuración de Google Workspace institucional.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span>Hosting VPS optimizado</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span>Instalación WordPress + tema</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="fas fa-spinner fa-spin text-yellow-500"></i>
+                            <span>SSL y seguridad perimetral</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Google Workspace configurado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-purple-500 card-hover">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                            <div class="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl font-black text-white">2</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900">Migración y eCommerce</h4>
+                                <p class="text-gray-600"><i class="far fa-calendar mr-2"></i>Mes 2</p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-2 bg-purple-50 text-purple-700 rounded-full font-semibold text-sm">
+                            WooCommerce + Pagos
+                        </span>
+                    </div>
+                    <p class="text-gray-700 mb-4">Implementación del sistema de ventas con WooCommerce, integración de pasarelas de pago y migración completa de la base de alumnos desde Tiendup.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>WooCommerce configurado</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Mercado Pago + Stripe</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Migración de alumnos</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Emails transaccionales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-pink-500 card-hover">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                            <div class="w-16 h-16 bg-pink-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl font-black text-white">3</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900">Ecosistema de Aprendizaje</h4>
+                                <p class="text-gray-600"><i class="far fa-calendar mr-2"></i>Mes 3</p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-2 bg-pink-50 text-pink-700 rounded-full font-semibold text-sm">
+                            Sensei LMS
+                        </span>
+                    </div>
+                    <p class="text-gray-700 mb-4">Implementación de Sensei LMS con los 12 módulos del Taller de Familiares DBT, creación de lecciones interactivas, quizzes y certificados digitales.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Sensei LMS instalado</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>12 módulos DBT</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Quizzes y evaluaciones</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Certificados digitales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-orange-500 card-hover">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                            <div class="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl font-black text-white">4</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900">Automatización de Operaciones</h4>
+                                <p class="text-gray-600"><i class="far fa-calendar mr-2"></i>Mes 4</p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-2 bg-orange-50 text-orange-700 rounded-full font-semibold text-sm">
+                            Zapier + Google Workspace
+                        </span>
+                    </div>
+                    <p class="text-gray-700 mb-4">Integración total con Google Workspace mediante webhooks y Zapier: automatización de registro de ventas, gestión de calendario y facturación.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>WordPress → Google Sheets</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Webhooks configurados</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Google Calendar sync</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Dashboard administrativo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-green-500 card-hover">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                            <div class="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl font-black text-white">5</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900">Contenidos y SEO</h4>
+                                <p class="text-gray-600"><i class="far fa-calendar mr-2"></i>Mes 5</p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-2 bg-green-50 text-green-700 rounded-full font-semibold text-sm">
+                            Marketing Digital
+                        </span>
+                    </div>
+                    <p class="text-gray-700 mb-4">Lanzamiento de blog educativo DBT con 20 artículos SEO-optimizados, estrategia de keywords, newsletter automatizado y autoridad de dominio.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Blog DBT activo</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>20 artículos publicados</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Estrategia SEO keywords</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Newsletter quincenal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 6 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-indigo-500 card-hover">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                            <div class="w-16 h-16 bg-indigo-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl font-black text-white">6</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900">Lanzamiento Academia Dige 2.0</h4>
+                                <p class="text-gray-600"><i class="far fa-calendar mr-2"></i>Mes 6</p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full font-semibold text-sm">
+                            Go-Live
+                        </span>
+                    </div>
+                    <p class="text-gray-700 mb-4">Consolidación del ecosistema, capacitación al equipo, documentación técnica completa y campaña de lanzamiento oficial al mercado.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Auditoría técnica completa</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Capacitación equipo Dige</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Documentación técnica</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="far fa-circle text-gray-300"></i>
+                            <span>Campaña de lanzamiento</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Timeline Summary -->
+            <div class="mt-12 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl p-8 text-white text-center">
+                <h4 class="text-3xl font-black mb-4">Febrero - Julio 2025</h4>
+                <p class="text-xl mb-4">6 meses de transformación digital hacia la soberanía tecnológica</p>
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                        <p class="text-sm text-gray-100">Inicio</p>
+                        <p class="text-lg font-bold">Febrero 2025</p>
+                    </div>
+                    <div class="text-3xl hidden md:block">→</div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                        <p class="text-sm text-gray-100">Lanzamiento</p>
+                        <p class="text-lg font-bold">Agosto 2025</p>
+                    </div>
+                    <div class="text-3xl hidden md:block">→</div>
+                    <div class="bg-white/30 backdrop-blur-sm rounded-lg px-6 py-3 border-2 border-white">
+                        <p class="text-sm text-gray-100">Break-Even</p>
+                        <p class="text-lg font-bold">Mes 13</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Analysis -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                    Análisis Financiero y ROI
+                </h3>
+                <p class="text-xl text-gray-600">Proyección de retorno de inversión a 5 años</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                
+                <!-- Investment Breakdown -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-200">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6">Inversión Inicial</h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center pb-3 border-b border-blue-200">
+                            <span class="text-gray-700">Desarrollo y Migración</span>
+                            <span class="font-bold text-gray-900">USD 3,000</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-3 border-b border-blue-200">
+                            <span class="text-gray-700">Diseño UX/UI</span>
+                            <span class="font-bold text-gray-900">USD 1,200</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-3 border-b border-blue-200">
+                            <span class="text-gray-700">Setup de Cursos</span>
+                            <span class="font-bold text-gray-900">USD 800</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 bg-blue-100 -mx-4 px-4 py-3 rounded-lg">
+                            <span class="font-bold text-gray-900">TOTAL INVERSIÓN</span>
+                            <span class="text-2xl font-black text-blue-600">USD 5,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operating Costs -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6">Costos Operativos Anuales</h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center pb-3 border-b border-green-200">
+                            <span class="text-gray-700">Hosting VPS</span>
+                            <span class="font-bold text-gray-900">USD 360</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-3 border-b border-green-200">
+                            <span class="text-gray-700">Licencias Plugins</span>
+                            <span class="font-bold text-gray-900">USD 495</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-3 border-b border-green-200">
+                            <span class="text-gray-700">Automatización (Zapier)</span>
+                            <span class="font-bold text-gray-900">USD 228</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-3 border-b border-green-200">
+                            <span class="text-gray-700">Pasarelas Pago (2.9%)</span>
+                            <span class="font-bold text-gray-900">USD 696</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-3 border-b border-green-200">
+                            <span class="text-gray-700">Mantenimiento M Digital</span>
+                            <span class="font-bold text-gray-900">USD 600</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 bg-green-100 -mx-4 px-4 py-3 rounded-lg">
+                            <span class="font-bold text-gray-900">TOTAL ANUAL</span>
+                            <span class="text-2xl font-black text-green-600">USD 2,379</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROI Chart -->
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-200">
+                <h4 class="text-2xl font-bold text-gray-900 mb-8 text-center">Proyección ROI (5 Años)</h4>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b-2 border-purple-200">
+                                <th class="text-left py-3 px-4 font-bold text-gray-900">Año</th>
+                                <th class="text-right py-3 px-4 font-bold text-gray-900">Inversión</th>
+                                <th class="text-right py-3 px-4 font-bold text-gray-900">Costo Evitado</th>
+                                <th class="text-right py-3 px-4 font-bold text-gray-900">Ahorro Neto</th>
+                                <th class="text-right py-3 px-4 font-bold text-gray-900">Acumulado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-purple-100">
+                                <td class="py-3 px-4 font-semibold">Año 1</td>
+                                <td class="text-right py-3 px-4 text-red-600">-USD 7,379</td>
+                                <td class="text-right py-3 px-4 text-green-600">+USD 2,388</td>
+                                <td class="text-right py-3 px-4 text-red-600">-USD 4,991</td>
+                                <td class="text-right py-3 px-4 font-bold text-red-600">-USD 4,991</td>
+                            </tr>
+                            <tr class="border-b border-purple-100 bg-purple-50">
+                                <td class="py-3 px-4 font-semibold">Año 2</td>
+                                <td class="text-right py-3 px-4 text-red-600">-USD 2,379</td>
+                                <td class="text-right py-3 px-4 text-green-600">+USD 2,388</td>
+                                <td class="text-right py-3 px-4 text-green-600">+USD 9</td>
+                                <td class="text-right py-3 px-4 font-bold text-red-600">-USD 4,982</td>
+                            </tr>
+                            <tr class="border-b border-purple-100">
+                                <td class="py-3 px-4 font-semibold">Año 3</td>
+                                <td class="text-right py-3 px-4 text-red-600">-USD 2,379</td>
+                                <td class="text-right py-3 px-4 text-green-600">+USD 2,388</td>
+                                <td class="text-right py-3 px-4 text-green-600">+USD 9</td>
+                                <td class="text-right py-3 px-4 font-bold text-red-600">-USD 4,973</td>
+                            </tr>
+                            <tr class="border-b border-purple-100 bg-purple-50">
+                                <td class="py-3 px-4 font-semibold">Año 4</td>
+                                <td class="text-right py-3 px-4 text-red-600">-USD 2,379</td>
+                                <td class="text-right py-3 px-4 text-green-600">+USD 2,388</td>
+                                <td class="text-right py-3 px-4 text-green-600">+USD 9</td>
+                                <td class="text-right py-3 px-4 font-bold text-red-600">-USD 4,964</td>
+                            </tr>
+                            <tr class="border-b-2 border-purple-300 bg-green-50">
+                                <td class="py-3 px-4 font-bold">Año 5</td>
+                                <td class="text-right py-3 px-4 text-red-600 font-bold">-USD 2,379</td>
+                                <td class="text-right py-3 px-4 text-green-600 font-bold">+USD 2,388</td>
+                                <td class="text-right py-3 px-4 text-green-600 font-bold">+USD 9</td>
+                                <td class="text-right py-3 px-4 font-black text-green-600 text-lg">+USD 5,036</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-8 grid md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl p-6 border border-purple-200">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600 mb-2">Break-Even Point</p>
+                            <p class="text-4xl font-black gradient-text">Mes 13</p>
+                            <p class="text-sm text-gray-500 mt-2">Febrero 2026</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 border border-purple-200">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600 mb-2">ROI Total (5 años)</p>
+                            <p class="text-4xl font-black gradient-text">487%</p>
+                            <p class="text-sm text-gray-500 mt-2">USD 35,940 valor generado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 gradient-primary text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-4xl md:text-5xl font-black mb-6">
+                ¿Listo para la Transformación?
+            </h3>
+            <p class="text-xl mb-8 text-gray-100">
+                Migra hacia un ecosistema digital propio, escalable y rentable
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="px-8 py-4 bg-white text-purple-600 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105">
+                    <i class="fas fa-rocket mr-2"></i>Iniciar Migración
+                </a>
+                <a href="#" class="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white/30 transition-all">
+                    <i class="fas fa-file-download mr-2"></i>Descargar Roadmap
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-brain text-white"></i>
+                        </div>
+                        <h4 class="text-xl font-bold">Dige Espacio</h4>
+                    </div>
+                    <p class="text-gray-400 text-sm">Centro especializado en Terapia Dialéctico Conductual con enfoque en formación familiar y profesional.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">M Digital</h4>
+                    <p class="text-gray-400 text-sm mb-3">Transformación digital integral para el sector salud mental.</p>
+                    <p class="text-gray-400 text-sm">
+                        <i class="fas fa-envelope mr-2 text-purple-400"></i>contacto@m-digital.com
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Proyecto</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><i class="fas fa-calendar-alt mr-2 text-purple-400"></i>Timeline: 6 meses</li>
+                        <li><i class="fas fa-money-bill-wave mr-2 text-purple-400"></i>ROI: 487%</li>
+                        <li><i class="fas fa-shield-alt mr-2 text-purple-400"></i>Clasificación: Confidencial</li>
+                        <li><i class="fas fa-code-branch mr-2 text-purple-400"></i>Versión: 2.0</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-500 text-sm">
+                    <strong>Confidencial - Uso Interno</strong> | 
+                    Desarrollado con 💙 por <strong>M Digital</strong> para <strong>Dige Espacio</strong> | 
+                    Febrero 2025
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button id="scrollTop" class="fixed bottom-8 right-8 w-14 h-14 gradient-primary text-white rounded-full shadow-2xl hidden items-center justify-center hover:scale-110 transition-all z-50 pulse-glow">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <script>
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.remove('hidden');
+                scrollTopBtn.classList.add('flex');
+            } else {
+                scrollTopBtn.classList.add('hidden');
+                scrollTopBtn.classList.remove('flex');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+
+</body>
+</html>
